@@ -6,6 +6,20 @@ const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
+const progressFill = document.querySelector('.scroll-progress i');
+let scrollQueued = false;
+const updateScrollProgress = () => {
+  if (scrollQueued) return;
+  scrollQueued = true;
+  requestAnimationFrame(() => {
+    const available = document.documentElement.scrollHeight - window.innerHeight;
+    progressFill.style.transform = `scaleX(${available > 0 ? window.scrollY / available : 0})`;
+    scrollQueued = false;
+  });
+};
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
 menuButton.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') !== 'true';
   menuButton.setAttribute('aria-expanded', String(open));
@@ -55,21 +69,63 @@ const countObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-count]').forEach(item => countObserver.observe(item));
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-// The product illustration responds subtly to pointer movement on larger screens.
+// The hero object and product cards use pointer parallax on fine pointers only.
 const art = document.querySelector('.hero-art');
 const machine = art.querySelector('.machine');
-if (window.matchMedia('(pointer:fine) and (prefers-reduced-motion: no-preference)').matches) {
+const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference)');
+if (window.matchMedia('(pointer:fine)').matches && motionAllowed.matches) {
+  let pointerFrame = 0;
   art.addEventListener('pointermove', event => {
+    if (pointerFrame) return;
+    pointerFrame = requestAnimationFrame(() => {
     const box = art.getBoundingClientRect();
     const x = (event.clientX - box.left) / box.width - .5;
     const y = (event.clientY - box.top) / box.height - .5;
-    machine.style.setProperty('--tilt-x', `${-y * 4}deg`);
-    machine.style.setProperty('--tilt-y', `${x * 5 - 9}deg`);
-    machine.style.animationPlayState = 'paused';
-    machine.style.transform = `translateY(-5px) rotateX(${-y * 4}deg) rotateY(${x * 5 - 9}deg)`;
+      machine.style.setProperty('--pointer-x', `${x * 9}px`);
+      machine.style.setProperty('--pointer-y', `${y * 8}px`);
+      machine.style.setProperty('--tilt-x', `${-y * 6}deg`);
+      machine.style.setProperty('--tilt-y', `${x * 10 - 9}deg`);
+      art.style.setProperty('--light-x', `${50 + x * 30}%`);
+      art.style.setProperty('--light-y', `${50 + y * 30}%`);
+      pointerFrame = 0;
+    });
   });
   art.addEventListener('pointerleave', () => {
-    machine.style.transform = '';
-    machine.style.animationPlayState = '';
+    ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y'].forEach(prop => machine.style.removeProperty(prop));
+    ['--light-x', '--light-y'].forEach(prop => art.style.removeProperty(prop));
+  });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    let cardFrame = 0;
+    card.addEventListener('pointermove', event => {
+      if (cardFrame) return;
+      cardFrame = requestAnimationFrame(() => {
+        const box = card.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - .5;
+        const y = (event.clientY - box.top) / box.height - .5;
+        card.style.setProperty('--card-x', `${-y * 4}deg`);
+        card.style.setProperty('--card-y', `${x * 5}deg`);
+        cardFrame = 0;
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--card-x');
+      card.style.removeProperty('--card-y');
+    });
   });
 }
+
+const sectionLinks = [...document.querySelectorAll('.nav a[href^="#"]')].filter(link => link.hash !== '#top');
+const sections = sectionLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    sectionLinks.forEach(link => {
+      const active = link.hash === `#${entry.target.id}`;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  });
+}, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+sections.forEach(section => sectionObserver.observe(section));
