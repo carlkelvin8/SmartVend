@@ -136,20 +136,48 @@ document.querySelectorAll('[data-inquiry-product]').forEach(link => {
 const requestedProduct = new URLSearchParams(window.location.search).get('losning');
 if (requestedProduct && [...inquiryProduct.options].some(option => option.value === requestedProduct)) inquiryProduct.value = requestedProduct;
 const inquiryForm = document.querySelector('#inquiry-form');
-inquiryForm.addEventListener('submit', event => {
+inquiryForm.addEventListener('submit', async event => {
   event.preventDefault();
+  const status = inquiryForm.querySelector('.form-status');
+  const submit = inquiryForm.querySelector('button[type="submit"]');
   const company = inquiryForm.elements.company.value.trim();
+  const contact = inquiryForm.elements.contact.value.trim();
   if (!company) {
     inquiryForm.elements.company.setCustomValidity('Skriv inn navnet på arbeidsplassen.');
     inquiryForm.elements.company.reportValidity();
     return;
   }
+  if (!contact) {
+    inquiryForm.elements.contact.setCustomValidity('Oppgi e-post eller telefon, slik at vi kan svare.');
+    inquiryForm.elements.contact.reportValidity();
+    return;
+  }
   const product = inquiryProduct.value;
   const message = inquiryForm.elements.message.value.trim();
-  const body = `Hei SmartVend,\n\nVi ønsker å høre mer om en løsning for arbeidsplassen vår.\n\nBedrift / arbeidsplass: ${company}\nLøsning: ${product}\n${message ? `\nBehov og plassering:\n${message}\n` : ''}\nVennlig hilsen`;
-  const email = `mailto:post@smartvend.no?subject=${encodeURIComponent(`Forespørsel — ${product}`)}&body=${encodeURIComponent(body)}`;
-  window.location.href = email;
-  inquiryForm.querySelector('.form-status').textContent = 'E-posten er klargjort. Hvis e-postprogrammet ikke åpnes, kan du kontakte post@smartvend.no direkte.';
+  const payload = { product, company, contact, message, website: inquiryForm.elements.website.value };
+  submit.disabled = true;
+  status.textContent = 'Sender forespørselen …';
+  try {
+    const response = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error('send_failed');
+    status.textContent = 'Takk! Forespørselen er sendt. Vi tar kontakt så snart vi kan.';
+    inquiryForm.reset();
+    if (window.svTrack) window.svTrack('lead_submit', { product });
+  } catch (error) {
+    const body = `Hei SmartVend,\n\nVi ønsker å høre mer om en løsning for arbeidsplassen vår.\n\nBedrift / arbeidsplass: ${company}\nKontakt: ${contact}\nLøsning: ${product}\n${message ? `\nBehov og plassering:\n${message}\n` : ''}\nVennlig hilsen`;
+    window.location.href = `mailto:post@smartvend.no?subject=${encodeURIComponent(`Forespørsel — ${product}`)}&body=${encodeURIComponent(body)}`;
+    status.textContent = 'Vi kunne ikke sende skjemaet direkte. E-posten er klargjort i e-postprogrammet ditt, eller kontakt post@smartvend.no.';
+    if (window.svTrack) window.svTrack('lead_fallback_mailto', { product });
+  } finally {
+    submit.disabled = false;
+  }
+});
+inquiryForm.elements.contact.addEventListener('input', () => {
+  inquiryForm.elements.contact.setCustomValidity('');
 });
 inquiryForm.elements.company.addEventListener('input', () => {
   inquiryForm.elements.company.setCustomValidity('');
