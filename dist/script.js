@@ -133,6 +133,8 @@ document.querySelectorAll('[data-inquiry-product]').forEach(link => {
     inquiryProduct.value = link.dataset.inquiryProduct;
   });
 });
+const requestedProduct = new URLSearchParams(window.location.search).get('losning');
+if (requestedProduct && [...inquiryProduct.options].some(option => option.value === requestedProduct)) inquiryProduct.value = requestedProduct;
 const inquiryForm = document.querySelector('#inquiry-form');
 inquiryForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -166,14 +168,14 @@ let introDismissed = false;
 function dismissIntro() {
   if (introDismissed) return;
   introDismissed = true;
-  const delay = reducedMotion.matches ? 0 : Math.max(0, 1050 - (performance.now() - introStarted));
+  const delay = reducedMotion.matches ? 0 : Math.max(0, 450 - (performance.now() - introStarted));
   window.setTimeout(() => document.documentElement.classList.remove('intro-pending'), delay);
 }
 const openingImage = document.querySelector('.hero-image img');
 if (openingImage.decode) openingImage.decode().then(dismissIntro, dismissIntro);
 else if (document.readyState === 'complete') dismissIntro();
 else window.addEventListener('load', dismissIntro, { once: true });
-window.setTimeout(dismissIntro, 1800);
+window.setTimeout(dismissIntro, 900);
 window.addEventListener('pageshow', event => {
   if (event.persisted) document.documentElement.classList.remove('intro-pending');
 });
