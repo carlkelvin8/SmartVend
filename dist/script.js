@@ -218,6 +218,59 @@ if ('IntersectionObserver' in window) {
   footerObserver.observe(animatedFooter);
 } else animatedFooter.classList.add('footer-entered');
 
+// A small, brand-colored cursor accent only appears for precise pointer devices.
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+if (cursorDot && cursorRing && matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion.matches) {
+  let cursorFrame = false;
+  let cursorX = 0;
+  let cursorY = 0;
+  document.addEventListener('pointermove', event => {
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    if (cursorFrame) return;
+    cursorFrame = true;
+    requestAnimationFrame(() => {
+      cursorDot.style.left = `${cursorX}px`;
+      cursorDot.style.top = `${cursorY}px`;
+      cursorRing.style.left = `${cursorX}px`;
+      cursorRing.style.top = `${cursorY}px`;
+      cursorDot.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+      cursorFrame = false;
+    });
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => {
+    cursorDot.style.opacity = '0';
+    cursorRing.style.opacity = '0';
+  });
+  document.querySelectorAll('a,button,summary,select,[data-view-image]').forEach(element => {
+    element.addEventListener('mouseenter', () => cursorRing.classList.add('is-hover'));
+    element.addEventListener('mouseleave', () => cursorRing.classList.remove('is-hover'));
+  });
+}
+
+// The mobile CTA appears after the opening story, so it supports conversion without covering the hero.
+const mobileCta = document.querySelector('.mobile-cta');
+if (mobileCta) {
+  const ctaObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => mobileCta.classList.toggle('is-visible', !entry.isIntersecting));
+  }, { threshold: 0.05 });
+  ctaObserver.observe(document.querySelector('.hero'));
+}
+
+// Cookie preference is local and limited to this static site's own notice.
+const cookieNotice = document.querySelector('#cookie-notice');
+const cookieKey = 'smartvend-cookie-notice';
+if (cookieNotice && localStorage.getItem(cookieKey) !== 'accepted') {
+  window.setTimeout(() => cookieNotice.classList.add('visible'), 1300);
+}
+cookieNotice?.querySelector('.cookie-accept').addEventListener('click', () => {
+  localStorage.setItem(cookieKey, 'accepted');
+  cookieNotice.classList.remove('visible');
+  window.setTimeout(() => cookieNotice.remove(), 500);
+});
+
 // Gallery framing is a crop of the supplied image, not an invented product view.
 document.querySelectorAll('[data-gallery]').forEach(gallery => {
   gallery.querySelectorAll('[data-image-view]').forEach(button => {
