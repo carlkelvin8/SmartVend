@@ -3,86 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8f5">
-  <meta name="description" content="SmartVend leverer moderne og fleksible automater for mat, drikke og produkter – tilpasset din arbeidsplass, hele døgnet.">
-  <title>SmartVend — Smarte automater. Enklere hverdag.</title>
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="SmartVend leverer salgsautomater for mat, drikke og andre produkter til norske arbeidsplasser. Service inkludert. Velg leasing eller kjøp.">
+  <title>SmartVend — Automater for en enklere arbeidsdag</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <script defer src="/script.js"></script>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><i></i></div>
-  <div class="topline"><span>Smartere tilgang. Hele døgnet.</span><span class="top-contact"><a href="tel:+4794846415">+47 948 46 415</a><i></i><a href="mailto:post@smartvend.no">post@smartvend.no</a></span></div>
-  <header class="header" id="top">
-    <a href="#top" class="brand" aria-label="SmartVend hjem"><span class="brand-mark"><b></b><b></b><b></b><b></b></span><span>smart<span>vend</span></span><sup>®</sup></a>
-    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false"><span></span><span></span></button>
-    <nav class="nav" aria-label="Hovedmeny">
-      <a href="#losninger">Løsninger</a><a href="#produkter">Produkter</a><a href="#slik-fungerer">Slik fungerer det</a><a href="#om-oss">Om oss</a>
-      <a class="nav-cta" href="#kontakt">La oss snakke <span>↗</span></a>
-    </nav>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="SmartVend hjem"><img src="/assets/logo.jpg" alt="SmartVend" width="1080" height="161"></a>
+    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
+    <nav id="navigation" class="nav" aria-label="Hovedmeny"><a href="#produkter">Produkter</a><a href="#bedrifter">For bedrifter</a><a href="#slik-fungerer">Slik fungerer det</a><a href="#om-oss">Om oss</a><a class="button button-orange" href="#kontakt">Be om tilbud <span aria-hidden="true">↗</span></a></nav>
   </header>
-
-  <main>
-    <section class="hero section-pad">
+  <main id="top">
+    <section class="hero wrap">
       <div class="hero-copy">
-        <div class="eyebrow reveal"><span class="eyebrow-dot"></span> AUTOMATISERT SERVERING · NORGE</div>
-        <h1 class="reveal">Enklere tilgang.<br><em>Smartere</em> hverdag.</h1>
-        <p class="hero-lede reveal">God mat og det du trenger, akkurat når du trenger det. Vi gjør det enkelt å tilby produkter hele døgnet – helt uten bemannet butikk.</p>
-        <div class="hero-actions reveal"><a class="button button-orange" href="#kontakt">Finn din løsning <span>↗</span></a><a class="text-link" href="#produkter">Utforsk produktene <span>↓</span></a></div>
-        <div class="hero-note reveal"><div class="avatar-stack"><span>SV</span><span>24</span><span>7</span></div><p><b>Alltid tilgjengelig</b><br>En løsning for din arbeidsplass</p></div>
+        <p class="eyebrow">SALGSAUTOMATER FOR ARBEIDSPLASSER</p>
+        <h1>Et godt måltid.<br>Også etter<br><span>arbeidstid.</span></h1>
+        <p class="hero-description">Varme måltider, fersk mat og kald drikke — tilgjengelig når folk trenger det. Vi leverer automater tilpasset din arbeidsplass, med service og vedlikehold inkludert.</p>
+        <div class="hero-actions"><a class="button button-blue" href="#produkter">Se våre automater <span aria-hidden="true">→</span></a><a class="simple-link" href="#kontakt">Snakk med oss</a></div>
+        <div class="hero-bottom"><span class="status-dot" aria-hidden="true"></span><span>Tilgjengelig hele døgnet</span><span class="hero-divider"></span><span>Leasing eller kjøp</span></div>
       </div>
-      <div class="hero-art reveal" aria-label="Illustrasjon av en SmartVend mat- og drikkeautomat">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="float-label label-top"><span class="pulse"></span> Tilgjengelig 24/7</span><span class="float-label label-side">Enklere drift <b>↗</b></span>
-        <div class="machine-shadow"></div><div class="machine">
-          <div class="machine-top"><div class="mini-brand">smart<span>vend</span><i></i></div><div class="machine-light"></div></div>
-          <div class="machine-body"><div class="machine-display"><div class="display-head">Dagens favoritter <span>•••</span></div><div class="food-grid"><div class="meal meal-one"><i>🥗</i><b>Frisk salat</b><small>Fersk</small></div><div class="meal meal-two"><i>🍝</i><b>Varm middag</b><small>Godt måltid</small></div><div class="meal meal-three"><i>🥪</i><b>God lunsj</b><small>Klar for deg</small></div></div><div class="display-bottom"><span>Velg et måltid</span><span class="screen-arrow">→</span></div></div><div class="machine-pay"><div class="pay-dot"></div><div class="pay-screen">TAPP<br><b>HER</b></div><div class="pay-slot"></div></div></div>
-          <div class="machine-foot"><div class="pickup"><span>HENT HER</span><i>⌄</i></div><div class="machine-wheels"><i></i><i></i></div></div>
-        </div>
-        <div class="floating-card"><span class="card-icon">✳</span><span><b>Smart løsning</b><small>Enkel drift</small></span><span class="card-check">✓</span></div>
-        <span class="art-caption">SMART MAT. ENKELT TILGJENGELIG.</span>
-      </div>
-      <div class="hero-index"><span>01</span><i></i><span>04</span></div>
+      <figure class="hero-photo"><img src="/assets/workplace.png" alt="En person velger et måltid fra en matserveringsautomat på arbeidsplassen" width="1069" height="722" fetchpriority="high"><figcaption><span>Matservering på arbeidsplassen</span><a href="#produkter">Finn en løsning <span aria-hidden="true">↗</span></a></figcaption></figure>
     </section>
-
-    <section class="trust-bar" aria-label="SmartVend fordeler"><span>Mat og drikke</span><i></i><span>Service inkludert</span><i></i><span>Leasing eller kjøp</span><i></i><span>Alltid åpent</span></section>
-
-    <section class="intro section-pad" id="losninger">
-      <div class="section-kicker reveal"><span>01 / LØSNINGEN</span><i></i><span>NYTENKENDE SERVERING</span></div>
-      <div class="intro-grid"><h2 class="reveal">Mer enn en automat.<br><em>En bedre pause.</em></h2><div class="intro-right reveal"><p>En god arbeidsdag trenger gode pauser. SmartVend gjør det enkelt å tilby mat, drikke og nødvendigheter der folk faktisk er – på jobb, på farten eller ute på anlegget.</p><a class="round-link" href="#slik-fungerer" aria-label="Les om hvordan det fungerer">↘</a></div></div>
-      <div class="stat-row"><div class="stat reveal"><strong><span data-count="24">0</span><sup>/7</sup></strong><span>Tilgang når det passer</span></div><div class="stat stat-word reveal"><strong>SERVICE<br><em>INKLUDERT</em></strong><span>Vedlikehold inkludert</span></div><div class="stat stat-word reveal"><strong>DIN<br><em>LØSNING</em></strong><span>Tilpasset stedet ditt</span></div><div class="stat-note reveal"><span class="asterisk">✳</span><p>Fra varm lunsj til små nødvendigheter – automatene tilpasses stedet og menneskene som bruker dem.</p></div></div>
-    </section>
-
-    <section class="products section-pad" id="produkter">
-      <div class="section-kicker reveal"><span>02 / PRODUKTER</span><i></i><span>FINN DIN FAVORITT</span></div>
-      <div class="products-heading"><h2 class="reveal">Små valg.<br><em>Stor forskjell.</em></h2><p class="reveal">Velg blant fleksible løsninger som gjør gode produkter tilgjengelige – hele dagen.</p></div>
+    <section class="service-strip wrap" aria-label="Våre løsninger"><p>Et tilbud som passer<br><strong>hverdagen hos dere.</strong></p><div><span>Kontor og lager</span><span>Skoler og offentlige bygg</span><span>Industri og byggeplasser</span></div></section>
+    <section class="products wrap section" id="produkter">
+      <div class="section-heading reveal"><div><p class="eyebrow">VÅRE PRODUKTER</p><h2>Hva passer hos dere?</h2></div><p>Fra en kompakt måltidsautomat til en komplett kantineløsning. Vi hjelper deg å velge.</p></div>
       <div class="product-grid">
-        <article class="product-card product-feature reveal"><div class="product-visual food-visual"><span class="visual-tag">MATSERVERING</span><div class="mini-machine mini-food"><div class="mini-screen"><span>QuickMEAL</span><div>🥗 🍝 🥘</div><small>God mat, klar når du er.</small></div><div class="mini-side"><i>●</i><i>●</i><i>●</i></div><div class="mini-base"></div></div><span class="visual-orbit"></span></div><div class="product-copy"><div><span class="product-number">01</span><h3>QuickMEAL</h3></div><p>Varme måltider, klare når sulten melder seg. Ferdigretter oppbevares kjølig og varmes ved kjøp.</p><a href="#kontakt" class="product-link">Utforsk QuickMEAL <span>↗</span></a></div></article>
-        <article class="product-card reveal"><div class="product-visual snack-visual"><span class="visual-tag">SNACKS & DRIKKE</span><div class="mini-machine mini-snack"><div class="shelf"><i>🥤</i><i>🧃</i><i>🥛</i><i>🍫</i><i>🥪</i><i>🍎</i></div><div class="mini-side"><i>●</i><i>●</i><i>●</i></div><div class="mini-base"></div></div></div><div class="product-copy"><div><span class="product-number">02</span><h3>SNACKstop</h3></div><p>Sandwich, salat, frukt og drikke – et fleksibelt tilbud for arbeidsplasser og fellesarealer.</p><a href="#kontakt" class="product-link">Utforsk SNACKstop <span>↗</span></a></div></article>
-        <article class="product-card reveal"><div class="product-visual hub-visual"><span class="visual-tag">DEN KOMPLETTE KANTINEN</span><div class="mini-machine mini-hub"><div class="hub-screen">QuickMEAL<br><b>HUB</b><div>24/7</div></div><div class="hub-shelves"><i>🥤</i><i>🍱</i><i>🥗</i><i>🥪</i><i>🧃</i><i>🍎</i><i>🍫</i><i>🥛</i></div><div class="mini-side"><i>●</i><i>●</i></div><div class="mini-base"></div></div></div><div class="product-copy"><div><span class="product-number">03</span><h3>QuickMEAL HUB</h3></div><p>En komplett kantineløsning med varme måltider, kald drikke, fersk mat og kaffe.</p><a href="#kontakt" class="product-link">Utforsk QuickMEAL HUB <span>↗</span></a></div></article>
+        <article class="product reveal"><a class="product-photo" href="#kontakt" aria-label="Spør oss om QuickMEAL"><img src="/assets/quickmeal.png" alt="QuickMEAL automat for varme måltider" width="656" height="456" loading="lazy"><span aria-hidden="true">↗</span></a><div class="product-heading"><h3>QuickMEAL</h3><span>VARME MÅLTIDER</span></div><p>En kompakt løsning for varm mat. Ferdigretter oppbevares kjølig og varmes opp ved kjøp.</p><a class="simple-link" href="mailto:post@smartvend.no?subject=QuickMEAL">Spør oss om QuickMEAL <span aria-hidden="true">→</span></a></article>
+        <article class="product reveal"><a class="product-photo" href="#kontakt" aria-label="Spør oss om SNACKstop"><img src="/assets/snackstop.png" alt="SNACKstop kjøleautomat med mat og drikke" width="522" height="482" loading="lazy"><span aria-hidden="true">↗</span></a><div class="product-heading"><h3>SNACKstop</h3><span>MAT OG DRIKKE</span></div><p>Sandwich, salat, frukt, snacks og kalde drikker. Et fleksibelt tilbud for arbeidsplasser og fellesarealer.</p><a class="simple-link" href="mailto:post@smartvend.no?subject=SNACKstop">Spør oss om SNACKstop <span aria-hidden="true">→</span></a></article>
+        <article class="product reveal"><a class="product-photo" href="#kontakt" aria-label="Spør oss om QuickMEAL Plus"><img src="/assets/quickmeal-plus.png" alt="QuickMEAL Plus kombinerer automat for varme måltider med kjøleautomat" width="508" height="496" loading="lazy"><span aria-hidden="true">↗</span></a><div class="product-heading"><h3>QuickMEAL Plus</h3><span>TO AUTOMATER I KOMBINASJON</span></div><p>Varme måltider og ferske alternativer i samme løsning. Kombiner matservering med snacks og drikke.</p><a class="simple-link" href="mailto:post@smartvend.no?subject=QuickMEAL%20Plus">Spør oss om QuickMEAL Plus <span aria-hidden="true">→</span></a></article>
       </div>
-      <div class="more-products reveal"><span>OGSÅ TILGJENGELIG</span><div><a href="#kontakt">Verneutstyr <b>↗</b></a><a href="#kontakt">Reseptfrie legemidler <b>↗</b></a><a href="#kontakt">Isboden & annet <b>↗</b></a></div></div>
+      <div class="other-products"><p>Har dere andre behov?</p><a href="#kontakt">Verneutstyr <span>↗</span></a><a href="#kontakt">Reseptfrie legemidler <span>↗</span></a><a href="#kontakt">Is og andre produkter <span>↗</span></a></div>
     </section>
-
-    <section class="business section-pad" id="bedrifter">
-      <div class="business-art reveal"><div class="big-ring"></div><div class="business-machine"><div class="machine-top"><div class="mini-brand">smart<span>vend</span><i></i></div><div class="machine-light"></div></div><div class="business-window"><div class="business-shelves"><span>🥤</span><span>🥪</span><span>🥗</span><span>🧃</span><span>🍫</span><span>🍎</span><span>🥛</span><span>🍱</span><span>🧋</span></div></div><div class="machine-pay"><div class="pay-dot"></div><div class="pay-screen">TAPP<br><b>HER</b></div></div><div class="machine-foot"><div class="pickup"><span>SMART KANTINE</span></div></div></div><div class="business-note"><span>↗</span><span>Arbeidsplassen<br><b>oppgradert</b></span></div></div>
-      <div class="business-copy"><div class="section-kicker reveal"><span>03 / FOR BEDRIFTER</span><i></i><span>SMART FOR ALLE</span></div><h2 class="reveal">Godt for folk.<br><em>Enkelt for deg.</em></h2><p class="reveal">Gi ansatte, kunder og besøkende et godt tilbud uten å bemanne en butikk eller kantine. Vi finner løsningen som passer størrelsen, plassen og behovet ditt.</p><ul class="benefit-list"><li class="reveal"><span>01</span><b>Enkel og fleksibel drift</b><i>↗</i></li><li class="reveal"><span>02</span><b>Service og vedlikehold inkludert</b><i>↗</i></li><li class="reveal"><span>03</span><b>Leasing eller kjøp</b><i>↗</i></li></ul><a class="button button-blue reveal" href="#kontakt">Snakk med oss <span>↗</span></a></div>
-    </section>
-
-    <section class="steps section-pad" id="slik-fungerer">
-      <div class="section-kicker reveal"><span>04 / SLIK FUNGERER DET</span><i></i><span>GANSKE ENKELT</span></div>
-      <div class="steps-head"><h2 class="reveal">Fra idé til<br><em>første bit.</em></h2><p class="reveal">Vi tar oss av detaljene. Du får en løsning som passer lokalet, menneskene og hverdagen deres.</p></div>
-      <div class="step-line"><div class="step reveal"><div class="step-icon">◎</div><span>01 — VI BLIR KJENT</span><h3>Fortell oss om stedet</h3><p>Hvor mange er dere? Hva ønsker folk seg? Vi starter med å forstå behovet.</p></div><div class="step reveal"><div class="step-icon">⌘</div><span>02 — VI FINNER LØSNINGEN</span><h3>Riktig automat, riktig utvalg</h3><p>Vi setter sammen en løsning som passer plassen og produktene dere vil tilby.</p></div><div class="step reveal"><div class="step-icon">✳</div><span>03 — KLAR FOR HVERDAGEN</span><h3>Vi ordner resten</h3><p>Installasjon, service og vedlikehold er inkludert. Så er det bare å ta i bruk.</p></div></div>
-    </section>
-
-    <section class="quote-band"><div class="quote-orb"></div><div class="quote-content reveal"><span class="quote-mark">“</span><p>De beste løsningene føles<br><em>enkle fra første dag.</em></p><a href="#kontakt" class="button button-white">Fortell oss hva du trenger <span>↗</span></a></div><span class="quote-side">SMARTVEND · NORGE · 24/7</span></section>
-
-    <section class="about section-pad" id="om-oss"><div class="about-left"><div class="section-kicker reveal"><span>05 / OM SMARTVEND</span><i></i><span>SMARTERE SERVERING</span></div><h2 class="reveal">God service.<br><em>På en ny måte.</em></h2></div><div class="about-right reveal"><p>SmartVend gjør det enklere å gi mennesker tilgang til det de trenger – på arbeidsplasser, byggeplasser, skoler, industri, transportknutepunkter og andre steder.</p><p>En gjennomtenkt automat kan gjøre hverdagen litt bedre. Vi hjelper deg med å finne ut hva som passer hos dere.</p><a href="#kontakt" class="text-link">Bli bedre kjent <span>↗</span></a></div></section>
-
-    <section class="contact section-pad" id="kontakt"><div class="contact-top"><div class="section-kicker reveal"><span>06 / KONTAKT</span><i></i><span>VI ER KLARE</span></div><span class="contact-stamp reveal">TA KONTAKT<br><b>↙</b></span></div><div class="contact-grid"><h2 class="reveal">Klar for en<br><em>enklere pause?</em></h2><div class="contact-details reveal"><p>Fortell oss litt om stedet ditt. Så finner vi ut hva som kan passe.</p><a class="contact-email" href="mailto:post@smartvend.no">post@smartvend.no <span>↗</span></a><a class="contact-phone" href="tel:+4794846415">+47 948 46 415</a><a class="button button-orange" href="mailto:post@smartvend.no?subject=Foresp%C3%B8rsel%20om%20SmartVend">Be om tilbud <span>↗</span></a></div></div></section>
+    <section class="business" id="bedrifter"><div class="wrap business-grid"><figure class="business-photo reveal"><img src="/assets/hub.png" alt="QuickMEAL HUB med mat, drikke og kaffe i et kontorlokale" width="930" height="747" loading="lazy"><figcaption>QuickMEAL HUB — en komplett kantineløsning.</figcaption></figure><div class="business-copy reveal"><p class="eyebrow">FOR BEDRIFTER</p><h2>En kantine som følger deres arbeidstid.</h2><p>Ikke alle arbeidsdager slutter klokken fire. Med QuickMEAL HUB får ansatte, kunder og besøkende tilgang til varme måltider, fersk mat, kald drikke og kaffe hele døgnet.</p><ul><li>Tilpasset lokalet og behovet deres</li><li>Service og vedlikehold inkludert</li><li>Velg mellom leasing og kjøp</li></ul><a class="button button-blue" href="#kontakt">Finn en løsning for bedriften <span aria-hidden="true">→</span></a></div></div></section>
+    <section class="steps wrap section" id="slik-fungerer"><div class="section-heading reveal"><div><p class="eyebrow">SLIK KOMMER DERE I GANG</p><h2>Vi gjør det enkelt.</h2></div><p>En samtale er alt som trengs for å starte. Vi tar det videre sammen med dere.</p></div><ol class="step-grid"><li class="reveal"><span class="step-number">01</span><h3>Fortell oss om behovet</h3><p>Hvor skal automaten stå, og hva vil dere tilby? Vi starter med arbeidsplassen deres.</p></li><li class="reveal"><span class="step-number">02</span><h3>Vi finner riktig løsning</h3><p>Vi hjelper dere med å velge automat, produkttilbud og leasing eller kjøp.</p></li><li class="reveal"><span class="step-number">03</span><h3>Et tilbud i hverdagen</h3><p>Når løsningen er på plass, er produktene tilgjengelige hele døgnet. Service og vedlikehold er inkludert.</p></li></ol></section>
+    <section class="about wrap" id="om-oss"><p class="eyebrow">OM SMARTVEND</p><div class="about-grid"><h2>Gode produkter.<br>Der folk er.</h2><div><p>SmartVend leverer moderne og fleksible salgsautomater til arbeidsplasser, skoler, offentlige virksomheter, industri og andre lokasjoner.</p><p>Vi gjør det enkelt å tilby mat, drikke og nødvendigheter uten behov for en bemannet butikk eller kantine. Løsningen tilpasses menneskene som skal bruke den.</p></div></div></section>
+    <section class="contact" id="kontakt"><div class="wrap contact-grid"><div><p class="eyebrow">LA OSS FINNE EN LØSNING</p><h2>Hva trenger<br>arbeidsplassen din?</h2><p>Ta kontakt for en prat eller et uforpliktende tilbud.</p><a class="button button-orange" href="mailto:post@smartvend.no?subject=Foresp%C3%B8rsel%20om%20SmartVend">Be om tilbud <span aria-hidden="true">↗</span></a></div><div class="contact-details"><span>E-POST</span><a href="mailto:post@smartvend.no">post@smartvend.no <span aria-hidden="true">↗</span></a><span>TELEFON</span><a href="tel:+4794846415">+47 948 46 415 <span aria-hidden="true">↗</span></a><p>Mat, drikke og andre produkter.<br>Vi hjelper deg å finne en løsning som passer.</p></div></div></section>
   </main>
-  <footer class="footer"><a href="#top" class="brand brand-footer"><span class="brand-mark"><b></b><b></b><b></b><b></b></span><span>smart<span>vend</span></span><sup>®</sup></a><span>© <span id="year"></span> SmartVend</span><a href="mailto:post@smartvend.no">post@smartvend.no ↗</a><a href="#top" class="back-top">Til toppen ↑</a></footer>
+  <footer class="footer wrap"><a class="brand" href="#top" aria-label="SmartVend hjem"><img src="/assets/logo.jpg" alt="SmartVend" width="1080" height="161" loading="lazy"></a><span>© <span id="year">2026</span> SmartVend</span><a href="#top">Til toppen ↑</a></footer>
 </body>
 </html>
